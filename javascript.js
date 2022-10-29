@@ -1,50 +1,63 @@
-// Your game is going to play against the computer, 
-// so begin with a function called getComputerChoice that 
+// Your game is going to play against the computer,
+// so begin with a function called getComputerChoice that
 // will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’.
 
-
-
 // Generate random number between 1 and 3
-// If 0, return Rock
-// Else if 1, return Paper
+// If 0, return rock
+// Else if 1, return paper
 // Else 2, return Scissor
 
-function getComputerChoice(){
-    let randomNumber = Math.floor((Math.random() * 3) + 1);
-    if (randomNumber == 1) {
-        return("Rock");
-    } else if (randomNumber == 2) {
-        return("Paper");
-    } else {
-        return("Scissors");
-    }
+function getComputerChoice() {
+  let randomNumber = Math.floor(Math.random() * 3 + 1);
+  if (randomNumber == 1) {
+    return "rock";
+  } else if (randomNumber == 2) {
+    return "paper";
+  } else {
+    return "scissors";
+  }
 }
 
-// Write a function that plays a single round of Rock Paper Scissors.
-//  The function should take two parameters - the playerSelection 
-//  and computerSelection - and then return a string that declares 
-//  the winner of the round like so: "You Lose! Paper beats Rock"
+// Write a function that plays a single round of rock paper scissors.
+//  The function should take two parameters - the playerSelection
+//  and computerSelection - and then return a string that declares
+//  the winner of the round like so: "You Lose! paper beats rock"
+
+const rockScissors = "Rock beats Scissors, you win!";
+const rockPaper = "Paper beats Rock, you lose!";
+const paperRock = "Paper beats Rock, you win!";
+const paperScissors = "Scissors beat Paper, you lose!";
+const scissorsRock = "Rock beats Scissors, you lose!";
+const scissorsPaper = "Scissors beats Paper, you win!";
+const draw = "It's a draw!";
+
 
 function playRound(playerSelection, computerSelection) {
-    if(playerSelection == "Rock" && computerSelection == "Scissors") {
-        return("Rock beats Scissors, you win!");
-    } else if (playerSelection == "Rock" && computerSelection == "Paper"){
-        return("Paper beats Rock, you lose!");
-    } else if (playerSelection == "Paper" && computerSelection == "Rock"){
-        return("Paper beats rock, you win!");
-    } else if (playerSelection == "Paper" && computerSelection == "Scissors"){
-        return("Scissors beat Paper, you lose!");
-    } else if (playerSelection == "Scissors" && computerSelection == "Rock"){
-        return("Rock beats Scissors, you lose!");
-    } else if (playerSelection == "Scissors" && computerSelection == "Paper"){
-        return("Scissors beat Paper, you win!");
-    } else {
-        return("It's a draw!");
-    }
+  switch (true) {
+    case playerSelection == "rock" && computerSelection == "scissors":
+      return rockScissors;
+      break;
+    case playerSelection == "rock" && computerSelection == "paper":
+      return rockPaper;
+      break;
+    case playerSelection == "paper" && computerSelection == "rock":
+      return paperRock;
+      break;
+    case playerSelection == "paper" && computerSelection == "scissors":
+      return paperScissors;
+      break;
+    case playerSelection == "scissors" && computerSelection == "rock":
+      return scissorsRock;
+      break;
+    case playerSelection == "scissors" && computerSelection == "paper":
+      return scissorsPaper;
+      break;
+    default:
+      return draw;
+  }
 }
 
-
-const playerSelection = "Rock";
+const playerSelection = "rock".toLowerCase();
 const computerSelection = getComputerChoice();
 
 console.log("You: " + playerSelection);
