@@ -31,62 +31,69 @@ const draw = "It's a draw!";
 // Player and Computer Selection
 
 const playerSelection = "rock".toLowerCase();
-const computerSelection = getComputerChoice();
 
 // Function to play a single round
 
 let playerScore = 0;
 let computerScore = 0;
 
-
 function playRound(playerSelection, computerSelection) {
-    switch (true) {
+  switch (true) {
     case playerSelection == "rock" && computerSelection == "scissors":
-        playerScore = 1;
-        return (rockScissors);
+      playerScore++;
+      return rockScissors;
     case playerSelection == "rock" && computerSelection == "paper":
-        computerScore = 1;
-        return (rockPaper);
+      computerScore++;
+      return rockPaper;
     case playerSelection == "paper" && computerSelection == "rock":
-        playerScore = 1;
-        return (paperRock);
+      playerScore++;
+      return paperRock;
     case playerSelection == "paper" && computerSelection == "scissors":
-        computerScore = 1;
-        return (paperScissors);
+      computerScore++;
+      return paperScissors;
     case playerSelection == "scissors" && computerSelection == "rock":
-        computerScore = 1;
-        return (scissorsRock);
+      computerScore++;
+      return scissorsRock;
     case playerSelection == "scissors" && computerSelection == "paper":
-        playerScore = 1;
-        return (scissorsPaper);
+      playerScore++;
+      return scissorsPaper;
     default:
-      return (draw);
+      return draw;
   }
 }
 
-console.log("You: " + playerSelection);
-console.log("Computer: " + computerSelection);
-console.log(playRound(playerSelection, computerSelection));
-console.log("Player Score: ", playerScore);
-console.log("Computer Score: ", computerScore);
-
-
-/*
-const rockScissors = "Rock beats Scissors, you win!";
-const rockPaper = "Paper beats Rock, you lose!";
-const paperRock = "Paper beats Rock, you win!";
-const paperScissors = "Scissors beat Paper, you lose!";
-const scissorsRock = "Rock beats Scissors, you lose!";
-const scissorsPaper = "Scissors beats Paper, you win!";
-const draw = "It's a draw!"; */
-
-
-
 /* Write a NEW function called game(). Call the playRound 
-function inside of this one to play a 5 round game that 
+// function inside of this one to play a 5 round game that 
 keeps score and reports a winner or loser at the end. */
 
-/* When the user inputs a number
-Initialize a counter variable and set its value to zero
-While counter is smaller than user inputted number increment the counter by one
-Print the value of the counter variable */
+let playerWins = "You are the winner!";
+let computerWins = "The computer wins, you lose!";
+let keepPlaying = "It's a draw, continue playing!";
+
+function game() {
+  for (let roundNumber = 0; roundNumber < 5; roundNumber++) {
+    getComputerChoice();
+    const computerSelection = getComputerChoice();
+
+    playRound(playerSelection, computerSelection);
+
+    console.log("You: " + playerSelection);
+    console.log("Computer: " + computerSelection);
+    console.log("Your Score: ", playerScore);
+    console.log("Computer Score: ", computerScore);
+    console.log("---");
+  }
+
+  console.log("Player Score: ", playerScore);
+  console.log("Computer Score: ", computerScore);
+
+  if (playerScore > computerScore) {
+    console.log(playerWins);
+  } else if (playerScore < computerScore) {
+    console.log(computerWins);
+  } else {
+    console.log(keepPlaying);
+  }
+}
+
+game();
