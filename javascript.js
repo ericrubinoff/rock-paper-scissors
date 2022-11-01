@@ -1,11 +1,4 @@
-/*Your game is going to play against the computer,
-so begin with a function called getComputerChoice that
-will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’.
-
-Generate random number between 1 and 3
-If 0, return rock
-Else if 1, return paper
-Else 2, return Scissor */
+/* Randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. */
 
 function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3 + 1);
@@ -18,7 +11,7 @@ function getComputerChoice() {
   }
 }
 
-/* Winner or loser strings */
+/* Strings */
 
 const rockScissors = "Rock beats Scissors, you win!";
 const rockPaper = "Paper beats Rock, you lose!";
@@ -31,11 +24,7 @@ const playerWins = "You are the winner!";
 const computerWins = "The computer wins, you lose!";
 const keepPlaying = "It's a draw, continue playing!";
 
-// Player and Computer Selection
-
-const playerSelection = "rock".toLowerCase();
-
-// Function to play a single round
+// Single Round
 
 let playerScore = 0;
 let computerScore = 0;
@@ -71,14 +60,16 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-/* Write a NEW function called game(). Call the playRound 
-// function inside of this one to play a 5 round game that 
-keeps score and reports a winner or loser at the end. */
+/* Play 5 Rounds and announce winner */
 
 function game() {
   for (let roundNumber = 0; roundNumber < 5; roundNumber++) {
+    
     getComputerChoice();
     const computerSelection = getComputerChoice();
+    
+    
+    const playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
 
     playRound(playerSelection, computerSelection);
 
