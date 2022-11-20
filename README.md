@@ -1,2 +1,2 @@
 # rock-paper-scissors
-Rock-Papers-Scissors TOP Project
+The Odin Project Rock-Paper-Scissors project.
